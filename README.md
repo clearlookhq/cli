@@ -27,7 +27,8 @@ Releases let Clearlook say which deploy changed something: see [Releases](https:
 
 ## Releasing this package
 
-Bump `version` in `package.json`, push a matching tag (`v0.1.1`). GitHub Actions publishes it with
-npm trusted publishing (no npm token) and provenance.
+Bump `version` in `package.json` and push a matching tag (`v0.1.1`). GitHub Actions stages it on npm
+with trusted publishing (no npm token) and provenance; a maintainer approves it on npmjs.com with
+2FA before anyone can install it.
 
 MIT licence.
