@@ -1,0 +1,16 @@
+{
+  "name": "@clearlookhq/cli",
+  "version": "0.1.0",
+  "description": "Clearlook from your terminal and CI: record deploys as releases, and set up Clearlook with your AI coding tool.",
+  "license": "MIT",
+  "type": "module",
+  "bin": { "clearlook": "bin/clearlook.mjs" },
+  "files": ["bin", "README.md"],
+  "engines": { "node": ">=18" },
+  "repository": { "type": "git", "url": "git+https://github.com/clearlookhq/cli.git" },
+  "homepage": "https://docs.clearlook.dev",
+  "bugs": { "url": "https://github.com/clearlookhq/cli/issues" },
+  "keywords": ["clearlook", "analytics", "releases", "deploys", "mcp"],
+  "scripts": { "test": "node --test test/*.test.mjs" },
+  "publishConfig": { "access": "public", "provenance": true }
+}

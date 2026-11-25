@@ -1,0 +1,24 @@
+# Publishes @clearlookhq/cli to npm when a version tag (v0.1.0, …) is pushed, with npm trusted
+# publishing: GitHub's OIDC identity instead of a long-lived npm token, and provenance added
+# automatically. The trusted publisher on npm is: clearlookhq / cli / publish.yml.
+name: publish
+on:
+  push:
+    tags: ['v*']
+permissions:
+  contents: read
+  id-token: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af # v4.1.0
+        with:
+          node-version: '24'
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm install -g npm@11.6.2
+      - name: The tag matches package.json
+        run: test "v$(node -p "require('./package.json').version")" = "${GITHUB_REF_NAME}"
+      - run: npm test
+      - run: npm publish --access public
